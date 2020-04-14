@@ -19,13 +19,9 @@ namespace RockPaperScissors
     public class Player
     {              
         private static readonly Random _random = new Random(DateTime.Now.Millisecond);
-        private readonly Winner _winner;  
+        private readonly Winner _winner;
 
-        public Player(Winner winner)
-        {
-            _winner = winner;
-        }
-
+        public Player(Winner winner) => _winner = winner;
         public Gesture Gesture { get; set; }
         public void RandomGesture() => Gesture = (Gesture)_random.Next(0, 3);
         public Winner Duel(Player other) => (Winner)((((int)Gesture - (int)other.Gesture + 4) % 3 - 1) * (int)_winner);
